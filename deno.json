@@ -41,7 +41,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitAny": false,
-    "strictBindCallApply": false
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false
   },
   "unstable": ["sloppy-imports"],
   "lint": {
