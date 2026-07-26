@@ -55,7 +55,7 @@ Run `deno task` to list every task available in `deno.json`.
 | `dev`        | `deno task dev`        | Starts the application from `src/main.ts` and restarts it when source files change.                   |
 | `build`      | `deno task build`      | Runs the Nest CLI compiler and writes the production output to `dist/`.                               |
 | `start:prod` | `deno task start:prod` | Runs the compiled application from `dist/main.js`. Build the project first.                           |
-| `generate`   | `deno task generate`   | Opens the interactive Nest schematic generator. Additional arguments can select a schematic directly. |
+| `g`          | `deno task g`          | Opens the interactive Nest schematic generator. Additional arguments can select a schematic directly. |
 | `check`      | `deno task check`      | Type-checks the application entry point and its dependency graph.                                     |
 | `lint`       | `deno task lint`       | Checks the code with Deno's built-in linter.                                                          |
 | `fmt`        | `deno task fmt`        | Formats the project with Deno's built-in formatter.                                                   |
@@ -86,15 +86,15 @@ different port.
 Start the interactive generator:
 
 ```bash
-deno task generate
+deno task g
 ```
 
 Or pass a schematic and name directly:
 
 ```bash
-deno task generate module users
-deno task generate controller users
-deno task generate service users
+deno task g module users
+deno task g controller users
+deno task g service users
 ```
 
 Generated files follow the configuration in `nest-cli.json`, whose source root
