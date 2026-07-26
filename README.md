@@ -50,20 +50,20 @@ are needed.
 
 Run `deno task` to list every task available in `deno.json`.
 
-| Task         | Command                | Purpose                                                                                               |
-| ------------ | ---------------------- | ----------------------------------------------------------------------------------------------------- |
-| `dev`        | `deno task dev`        | Starts the application from `src/main.ts` and restarts it when source files change.                   |
-| `build`      | `deno task build`      | Runs the Nest CLI compiler and writes the production output to `dist/`.                               |
-| `start:prod` | `deno task start:prod` | Runs the compiled application from `dist/main.js`. Build the project first.                           |
-| `g`          | `deno task g`          | Opens the interactive Nest schematic generator. Additional arguments can select a schematic directly. |
-| `check`      | `deno task check`      | Type-checks the application entry point and its dependency graph.                                     |
-| `lint`       | `deno task lint`       | Checks the code with Deno's built-in linter.                                                          |
-| `fmt`        | `deno task fmt`        | Formats the project with Deno's built-in formatter.                                                   |
-| `fmt:check`  | `deno task fmt:check`  | Verifies formatting without changing files.                                                           |
-| `test`       | `deno task test`       | Runs the unit tests under `src/`.                                                                     |
-| `test:e2e`   | `deno task test:e2e`   | Runs the end-to-end tests under `test/`.                                                              |
-| `test:all`   | `deno task test:all`   | Runs the complete unit and end-to-end test suite.                                                     |
-| `ci`         | `deno task ci`         | Runs type checking, formatting, linting, all tests, and the production build.                         |
+| Task         | Command                          | Purpose                                                                               |
+| ------------ | -------------------------------- | ------------------------------------------------------------------------------------- |
+| `dev`        | `deno task dev`                  | Starts the application from `src/main.ts` and restarts it when source files change.   |
+| `build`      | `deno task build`                | Runs the Nest CLI compiler and writes the production output to `dist/`.               |
+| `start:prod` | `deno task start:prod`           | Runs the compiled application from `dist/main.js`. Build the project first.           |
+| `g`          | `deno task g <schematic> <name>` | Generates a Nest resource. The required schematic and resource name must be provided. |
+| `check`      | `deno task check`                | Type-checks the application entry point and its dependency graph.                     |
+| `lint`       | `deno task lint`                 | Checks the code with Deno's built-in linter.                                          |
+| `fmt`        | `deno task fmt`                  | Formats the project with Deno's built-in formatter.                                   |
+| `fmt:check`  | `deno task fmt:check`            | Verifies formatting without changing files.                                           |
+| `test`       | `deno task test`                 | Runs the unit tests under `src/`.                                                     |
+| `test:e2e`   | `deno task test:e2e`             | Runs the end-to-end tests under `test/`.                                              |
+| `test:all`   | `deno task test:all`             | Runs the complete unit and end-to-end test suite.                                     |
+| `ci`         | `deno task ci`                   | Runs type checking, formatting, linting, all tests, and the production build.         |
 
 ### Development
 
@@ -83,18 +83,25 @@ different port.
 
 ### Generate NestJS resources
 
-Start the interactive generator:
+The `g` task is an alias for `nest generate` and requires at least a schematic.
+It does not open an interactive generator when invoked without arguments.
 
 ```bash
-deno task g
+deno task g <schematic> <name>
 ```
 
-Or pass a schematic and name directly:
+For example:
 
 ```bash
 deno task g module users
 deno task g controller users
 deno task g service users
+```
+
+Running `deno task g` without arguments results in:
+
+```text
+error: missing required argument 'schematic'
 ```
 
 Generated files follow the configuration in `nest-cli.json`, whose source root
